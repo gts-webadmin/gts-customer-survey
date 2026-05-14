@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>George T. Sanders Customer Experience Survey</title>
+  <style>
+    :root {
+      --bg: #f6f7f9;
+      --card: #ffffff;
+      --text: #1f2933;
+      --muted: #667085;
+      --border: #d0d5dd;
+      --accent: #1f4e79;
+      --accent-light: #eaf2f8;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    .survey-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      box-shadow: 0 8px 24px rgba(16, 24, 40, 0.08);
+      overflow: hidden;
+    }
+
+    .header {
+      background: var(--accent);
+      color: #ffffff;
+      padding: 32px;
+    }
+
+    .header h1 {
+      margin: 0 0 12px;
+      font-size: 28px;
+      line-height: 1.2;
+    }
+
+    .header p {
+      margin: 0;
+      color: #eef4ff;
+      max-width: 760px;
+    }
+
+    form {
+      padding: 32px;
+    }
+
+    section {
+      margin-bottom: 34px;
+      padding-bottom: 26px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    section:last-of-type {
+      border-bottom: none;
+      margin-bottom: 18px;
+    }
+
+    h2 {
+      margin: 0 0 18px;
+      font-size: 20px;
+      color: var(--accent);
+    }
+
+    .field {
+      margin-bottom: 22px;
+    }
+
+    label,
+    legend {
+      display: block;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .hint {
+      color: var(--muted);
+      font-size: 14px;
+      margin-top: -4px;
+      margin-bottom: 10px;
+    }
+
+    input[type="text"],
+    select,
+    textarea {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 11px 12px;
+      font-size: 16px;
+      background: #ffffff;
+    }
+
+    textarea {
+      min-height: 110px;
+      resize: vertical;
+    }
+
+    fieldset {
+      border: 0;
+      padding: 0;
+      margin: 0;
+    }
+
+    .options {
+      display: grid;
+      gap: 10px;
+    }
+
+    .options.two-col {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .options.three-col {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .option {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 400;
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 10px 12px;
+    }
+
+    .rating-scale {
+      display: grid;
+      grid-template-columns: repeat(10, 1fr);
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .rating-scale label {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 10px 4px;
+      font-weight: 400;
+      background: #ffffff;
+    }
+
+    .scale-labels {
+      display: flex;
+      justify-content: space-between;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .matrix {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+      font-size: 15px;
+    }
+
+    .matrix th,
+    .matrix td {
+      border: 1px solid var(--border);
+      padding: 10px;
+      text-align: center;
+    }
+
+    .matrix th:first-child,
+    .matrix td:first-child {
+      text-align: left;
+      width: 38%;
+    }
+
+    .matrix thead {
+      background: var(--accent-light);
+    }
+
+    .required {
+      color: #b42318;
+    }
+
+    .actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    button {
+      border: 0;
+      border-radius: 8px;
+      padding: 12px 22px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button[type="reset"] {
+      background: #eef2f6;
+      color: var(--text);
+    }
+
+    button[type="submit"] {
+      background: var(--accent);
+      color: #ffffff;
+    }
+
+    .footer-note {
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 14px;
+      text-align: center;
+    }
+
+    @media (max-width: 720px) {
+      .container {
+        margin: 20px auto;
+      }
+
+      .header,
+      form {
+        padding: 24px;
+      }
+
+      .options.two-col,
+      .options.three-col,
+      .rating-scale {
+        grid-template-columns: 1fr;
+      }
+
+      .matrix {
+        font-size: 14px;
+      }
+
+      .matrix th,
+      .matrix td {
+        padding: 8px 6px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="container">
+    <div class="survey-card">
+      <header class="header">
+        <h1>George T. Sanders Customer Experience Survey</h1>
+        <p>
+          Thank you for being a valued customer of George T. Sanders Company.
+          We appreciate your feedback and are committed to continually improving our pricing,
+          service, and overall customer experience. This survey should take approximately
+          5 minutes to complete.
+        </p>
+      </header>
+
+      <form action="#" method="post">
+        <section>
+          <h2>Customer Information</h2>
+
+          <div class="field">
+            <label for="company-name">Company Name <span class="required">*</span></label>
+            <input type="text" id="company-name" name="company_name" required />
+          </div>
+
+          <div class="field">
+            <label for="contact-name">Contact Name <span class="hint">(Optional)</span></label>
+            <input type="text" id="contact-name" name="contact_name" />
+          </div>
+
+          <div class="field">
+            <label for="branch-location">Branch Location You Primarily Work With <span class="required">*</span></label>
+            <select id="branch-location" name="branch_location" required>
+              <option value="">Select a branch</option>
+              <option>Wheat Ridge</option>
+              <option>Silverthorne</option>
+              <option>Denver</option>
+              <option>Basalt</option>
+              <option>Montrose</option>
+              <option>Fort Collins</option>
+              <option>Highlands Ranch</option>
+              <option>Colorado Springs</option>
+              <option>Louisville</option>
+              <option>Grand Junction</option>
+              <option>Brighton</option>
+              <option>Berthoud</option>
+              <option>Greeley</option>
+              <option>Pagosa Springs</option>
+              <option>Centennial</option>
+              <option>Englewood</option>
+              <option>Aurora</option>
+              <option>Cody</option>
+            </select>
+          </div>
+        </section>
+
+        <section>
+          <h2>1. Overall Experience</h2>
+
+          <div class="field">
+            <fieldset>
+              <legend>How satisfied are you with George T. Sanders overall? <span class="required">*</span></legend>
+              <div class="options">
+                <label class="option"><input type="radio" name="overall_satisfaction" value="Very Satisfied" required /> Very Satisfied</label>
+                <label class="option"><input type="radio" name="overall_satisfaction" value="Satisfied" /> Satisfied</label>
+                <label class="option"><input type="radio" name="overall_satisfaction" value="Neutral" /> Neutral</label>
+                <label class="option"><input type="radio" name="overall_satisfaction" value="Dissatisfied" /> Dissatisfied</label>
+                <label class="option"><input type="radio" name="overall_satisfaction" value="Very Dissatisfied" /> Very Dissatisfied</label>
+              </div>
+            </fieldset>
+          </div>
+
+          <div class="field">
+            <fieldset>
+              <legend>How likely are you to recommend George T. Sanders to others? <span class="required">*</span></legend>
+              <div class="scale-labels">
+                <span>1 = Not Likely</span>
+                <span>10 = Extremely Likely</span>
+              </div>
+              <div class="rating-scale">
+                <label><input type="radio" name="recommendation_likelihood" value="1" required />1</label>
+                <label><input type="radio" name="recommendation_likelihood" value="2" />2</label>
+                <label><input type="radio" name="recommendation_likelihood" value="3" />3</label>
+                <label><input type="radio" name="recommendation_likelihood" value="4" />4</label>
+                <label><input type="radio" name="recommendation_likelihood" value="5" />5</label>
+                <label><input type="radio" name="recommendation_likelihood" value="6" />6</label>
+                <label><input type="radio" name="recommendation_likelihood" value="7" />7</label>
+                <label><input type="radio" name="recommendation_likelihood" value="8" />8</label>
+                <label><input type="radio" name="recommendation_likelihood" value="9" />9</label>
+                <label><input type="radio" name="recommendation_likelihood" value="10" />10</label>
+              </div>
+            </fieldset>
+          </div>
+        </section>
+
+        <section>
+          <h2>2. Pricing &amp; Value</h2>
+
+          <div class="field">
+            <fieldset>
+              <legend>How would you rate our pricing competitiveness? <span class="required">*</span></legend>
+              <div class="options two-col">
+                <label class="option"><input type="radio" name="pricing_competitiveness" value="Excellent" required /> Excellent</label>
+                <label class="option"><input type="radio" name="pricing_competitiveness" value="Good" /> Good</label>
+                <label class="option"><input type="radio" name="pricing_competitiveness" value="Fair" /> Fair</label>
+                <label class="option"><input type="radio" name="pricing_competitiveness" value="Poor" /> Poor</label>
+              </div>
+            </fieldset>
+          </div>
+
+          <div class="field">
+            <fieldset>
+              <legend>How would you rate the value you receive for the price paid? <span class="required">*</span></legend>
+              <div class="options two-col">
+                <label class="option"><input type="radio" name="price_value" value="Excellent" required /> Excellent</label>
+                <label class="option"><input type="radio" name="price_value" value="Good" /> Good</label>
+                <label class="option"><input type="radio" name="price_value" value="Fair" /> Fair</label>
+                <label class="option"><input type="radio" name="price_value" value="Poor" /> Poor</label>
+              </div>
+            </fieldset>
+          </div>
+
+          <div class="field">
+            <fieldset>
+              <legend>In which areas could we improve our pricing or value?</legend>
+              <div class="options three-col">
+                <label class="option"><input type="checkbox" name="pricing_improvement[]" value="Product Pricing" /> Product Pricing</label>
+                <label class="option"><input type="checkbox" name="pricing_improvement[]" value="Job Quotes" /> Job Quotes</label>
+                <label class="option"><input type="checkbox" name="pricing_improvement[]" value="Contractor Programs" /> Contractor Programs</label>
+                <label class="option"><input type="checkbox" name="pricing_improvement[]" value="Delivery Fees" /> Delivery Fees</label>
+                <label class="option"><input type="checkbox" name="pricing_improvement[]" value="Volume Discounts" /> Volume Discounts</label>
+                <label class="option"><input type="checkbox" name="pricing_improvement[]" value="Payment Terms" /> Payment Terms</label>
+              </div>
+            </fieldset>
+          </div>
+
+          <div class="field">
+            <label for="pricing-improvement-other">Other pricing or value improvement area</label>
+            <input type="text" id="pricing-improvement-other" name="pricing_improvement_other" />
+          </div>
+
+          <div class="field">
+            <fieldset>
+              <legend>Which product categories do you purchase from us due to competitive pricing?</legend>
+              <div class="options two-col">
+                <label class="option"><input type="checkbox" name="competitive_pricing_purchase[]" value="Plumbing Fixtures" /> Plumbing Fixtures</label>
+                <label class="option"><input type="checkbox" name="competitive_pricing_purchase[]" value="Tools" /> Tools</label>
+                <label class="option"><input type="checkbox" name="competitive_pricing_purchase[]" value="Water Heaters" /> Water Heaters</label>
+                <label class="option"><input type="checkbox" name="competitive_pricing_purchase[]" value="Hydronic Heat" /> Hydronic Heat</label>
+                <label class="option"><input type="checkbox" name="competitive_pricing_purchase[]" value="HVAC" /> HVAC</label>
+                <label class="option"><input type="checkbox" name="competitive_pricing_purchase[]" value="Commodity Pipe and Fittings" /> Commodity Pipe and Fittings</label>
+                <label class="option"><input type="checkbox" name="competitive_pricing_purchase[]" value="Other" /> Other</label>
+              </div>
+            </fieldset>
+          </div>
+
+          <div class="field">
+            <label for="competitive-pricing-purchase-other">Other competitively priced product category</label>
+            <input type="text" id="competitive-pricing-purchase-other" name="competitive_pricing_purchase_other" />
+          </div>
+
+          <div class="field">
+            <fieldset>
+              <legend>Which product categories do you not buy from GTS due to uncompetitive pricing?</legend>
+              <div class="options two-col">
+                <label class="option"><input type="checkbox" name="uncompetitive_pricing_not_purchased[]" value="Plumbing Fixtures" /> Plumbing Fixtures</label>
+                <label class="option"><input type="checkbox" name="uncompetitive_pricing_not_purchased[]" value="Tools" /> Tools</label>
+                <label class="option"><input type="checkbox" name="uncompetitive_pricing_not_purchased[]" value="Water Heaters" /> Water Heaters</label>
+                <label class="option"><input type="checkbox" name="uncompetitive_pricing_not_purchased[]" value="Hydronic Heat" /> Hydronic Heat</label>
+                <label class="option"><input type="checkbox" name="uncompetitive_pricing_not_purchased[]" value="HVAC" /> HVAC</label>
+                <label class="option"><input type="checkbox" name="uncompetitive_pricing_not_purchased[]" value="Commodity Pipe and Fittings" /> Commodity Pipe and Fittings</label>
+                <label class="option"><input type="checkbox" name="uncompetitive_pricing_not_purchased[]" value="Other" /> Other</label>
+              </div>
+            </fieldset>
+          </div>
+
+          <div class="field">
+            <label for="uncompetitive-pricing-other">Other uncompetitive product category</label>
+            <input type="text" id="uncompetitive-pricing-other" name="uncompetitive_pricing_not_purchased_other" />
+          </div>
+        </section>
+
+        <section>
+          <h2>3. Service &amp; Support</h2>
+
+          <div class="field">
+            <fieldset>
+              <legend>How would you rate our customer service? <span class="required">*</span></legend>
+              <div class="options two-col">
+                <label class="option"><input type="radio" name="customer_service" value="Excellent" required /> Excellent</label>
+                <label class="option"><input type="radio" name="customer_service" value="Good" /> Good</label>
+                <label class="option"><input type="radio" name="customer_service" value="Fair" /> Fair</label>
+                <label class="option"><input type="radio" name="customer_service" value="Poor" /> Poor</label>
+              </div>
+            </fieldset>
+          </div>
+
+          <div class="field">
+            <fieldset>
+              <legend>How responsive is our team when you need assistance? <span class="required">*</span></legend>
+              <div class="options">
+                <label class="option"><input type="radio" name="team_responsiveness" value="Extremely Responsive" required /> Extremely Responsive</label>
+                <label class="option"><input type="radio" name="team_responsiveness" value="Responsive" /> Responsive</label>
+                <label class="option"><input type="radio" name="team_responsiveness" value="Somewhat Responsive" /> Somewhat Responsive</label>
+                <label class="option"><input type="radio" name="team_responsiveness" value="Not Responsive" /> Not Responsive</label>
+              </div>
+            </fieldset>
+          </div>
+
+          <div class="field">
+            <fieldset>
+              <legend>Please rate the following: <span class="required">*</span></legend>
+              <table class="matrix">
+                <thead>
+                  <tr>
+                    <th>Category</th>
+                    <th>Excellent</th>
+                    <th>Good</th>
+                    <th>Fair</th>
+                    <th>Poor</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Product Availability</td>
+                    <td><input type="radio" name="product_availability" value="Excellent" required /></td>
+                    <td><input type="radio" name="product_availability" value="Good" /></td>
+                    <td><input type="radio" name="product_availability" value="Fair" /></td>
+                    <td><input type="radio" name="product_availability" value="Poor" /></td>
+                  </tr>
+                  <tr>
+                    <td>Order Accuracy</td>
+                    <td><input type="radio" name="order_accuracy" value="Excellent" required /></td>
+                    <td><input type="radio" name="order_accuracy" value="Good" /></td>
+                    <td><input type="radio" name="order_accuracy" value="Fair" /></td>
+                    <td><input type="radio" name="order_accuracy" value="Poor" /></td>
+                  </tr>
+                  <tr>
+                    <td>Delivery Performance</td>
+                    <td><input type="radio" name="delivery_performance" value="Excellent" required /></td>
+                    <td><input type="radio" name="delivery_performance" value="Good" /></td>
+                    <td><input type="radio" name="delivery_performance" value="Fair" /></td>
+                    <td><input type="radio" name="delivery_performance" value="Poor" /></td>
+                  </tr>
+                  <tr>
+                    <td>Counter Service</td>
+                    <td><input type="radio" name="counter_service" value="Excellent" required /></td>
+                    <td><input type="radio" name="counter_service" value="Good" /></td>
+                    <td><input type="radio" name="counter_service" value="Fair" /></td>
+                    <td><input type="radio" name="counter_service" value="Poor" /></td>
+                  </tr>
+                  <tr>
+                    <td>Technical/Product Knowledge</td>
+                    <td><input type="radio" name="technical_product_knowledge" value="Excellent" required /></td>
+                    <td><input type="radio" name="technical_product_knowledge" value="Good" /></td>
+                    <td><input type="radio" name="technical_product_knowledge" value="Fair" /></td>
+                    <td><input type="radio" name="technical_product_knowledge" value="Poor" /></td>
+                  </tr>
+                  <tr>
+                    <td>Communication</td>
+                    <td><input type="radio" name="communication" value="Excellent" required /></td>
+                    <td><input type="radio" name="communication" value="Good" /></td>
+                    <td><input type="radio" name="communication" value="Fair" /></td>
+                    <td><input type="radio" name="communication" value="Poor" /></td>
+                  </tr>
+                </tbody>
+              </table>
+            </fieldset>
+          </div>
+        </section>
+
+        <section>
+          <h2>4. Competitive Insights</h2>
+
+          <div class="field">
+            <fieldset>
+              <legend>Which suppliers or competitors do you also work with?</legend>
+              <div class="options two-col">
+                <label class="option"><input type="checkbox" name="competitors[]" value="Ferguson" /> Ferguson</label>
+                <label class="option"><input type="checkbox" name="competitors[]" value="Hajoca" /> Hajoca</label>
+                <label class="option"><input type="checkbox" name="competitors[]" value="Winsupply" /> Winsupply</label>
+                <label class="option"><input type="checkbox" name="competitors[]" value="MORSCO/Reece" /> MORSCO/Reece</label>
+                <label class="option"><input type="checkbox" name="competitors[]" value="Coburn’s" /> Coburn’s</label>
+                <label class="option"><input type="checkbox" name="competitors[]" value="Other" /> Other</label>
+              </div>
+            </fieldset>
+          </div>
+
+          <div class="field">
+            <label for="competitor-other">Other supplier or competitor</label>
+            <input type="text" id="competitor-other" name="competitor_other" />
+          </div>
+
+          <div class="field">
+            <label for="competitors-do-well">What are competitors doing particularly well that you value?</label>
+            <textarea id="competitors-do-well" name="competitors_do_well"></textarea>
+          </div>
+
+          <div class="field">
+            <label for="missing-offerings">Are there products, services, programs, or technologies competitors provide that George T. Sanders currently does not?</label>
+            <textarea id="missing-offerings" name="missing_offerings"></textarea>
+          </div>
+
+          <div class="field">
+            <label for="competitor-impact">How do those competitor offerings improve your business operations, profitability, or customer experience?</label>
+            <textarea id="competitor-impact" name="competitor_impact"></textarea>
+          </div>
+        </section>
+
+        <section>
+          <h2>5. Growth Opportunities</h2>
+
+          <div class="field">
+            <label for="additional-products-services">What additional products or services would you like us to offer?</label>
+            <textarea id="additional-products-services" name="additional_products_services"></textarea>
+          </div>
+
+          <div class="field">
+            <label for="valuable-partner">What could George T. Sanders do to become a more valuable partner to your business?</label>
+            <textarea id="valuable-partner" name="valuable_partner"></textarea>
+          </div>
+        </section>
+
+        <section>
+          <h2>6. Final Feedback</h2>
+
+          <div class="field">
+            <label for="additional-feedback">Please share any additional comments, concerns, or suggestions.</label>
+            <textarea id="additional-feedback" name="additional_feedback"></textarea>
+          </div>
+        </section>
+
+        <div class="actions">
+          <button type="reset">Clear Form</button>
+          <button type="submit">Submit Survey</button>
+        </div>
+
+        <p class="footer-note">
+          Thank you for your feedback and partnership. Your input helps us improve and better serve your business.
+        </p>
+      </form>
+    </div>
+  </main>
+</body>
+</html>
