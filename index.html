@@ -276,33 +276,29 @@
 window.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("survey-form");
 
-  form.addEventListener("submit", async function(event) {
+  form.addEventListener("submit", function(event) {
     event.preventDefault();
 
     const submitButton = form.querySelector('button[type="submit"]');
-
     submitButton.disabled = true;
     submitButton.innerText = "Submitting...";
 
     const formData = new FormData(form);
+    const data = new URLSearchParams();
 
-    try {
-      await fetch("https://hooks.zapier.com/hooks/catch/24835337/4yn32q6/", {
-        method: "POST",
-        body: formData,
-        mode: "no-cors"
-      });
-
-      window.location.href = "gts_survey_thank_you_page.html";
-
-    } catch (error) {
-      console.error(error);
-
-      alert("There was an issue submitting the form. Please try again.");
-
-      submitButton.disabled = false;
-      submitButton.innerText = "Submit Survey";
+    for (const [key, value] of formData.entries()) {
+      data.append(key.replace("[]", ""), value);
     }
+
+    fetch("https://hooks.zapier.com/hooks/catch/24835337/4yn32q6/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      body: data.toString()
+    }).finally(() => {
+      window.location.href = "gts_survey_thank_you_page.html";
+    });
   });
 });
 </script>
