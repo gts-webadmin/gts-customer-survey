@@ -99,7 +99,6 @@
     }
 
     input[type="text"],
-    input[type="email"],
     select,
     textarea {
       width: 100%;
@@ -271,9 +270,7 @@
         </p>
       </header>
 
-      <form id="survey-form">
-        <input type="hidden" id="submitted-at" name="submitted_at" />
-
+      <form action="#" method="post">
         <section>
           <h2>Customer Information</h2>
 
@@ -292,7 +289,7 @@
             <p class="hint">
               Your email is required so we can send your digital gift card for completing this survey.
             </p>
-            <input type="email" id="customer-email" name="customer_email" required />
+            <input type="text" id="customer-email" name="customer_email" required />
           </div>
 
           <div class="field">
@@ -632,39 +629,5 @@
       </form>
     </div>
   </main>
-
-  <script>
-    window.addEventListener("DOMContentLoaded", () => {
-      const form = document.getElementById("survey-form");
-      const submittedAt = document.getElementById("submitted-at");
-
-      form.addEventListener("submit", function(event) {
-        event.preventDefault();
-
-        submittedAt.value = new Date().toISOString();
-
-        const submitButton = form.querySelector('button[type="submit"]');
-        submitButton.disabled = true;
-        submitButton.innerText = "Submitting...";
-
-        const formData = new FormData(form);
-        const data = new URLSearchParams();
-
-        for (const [key, value] of formData.entries()) {
-          data.append(key.replace("[]", ""), value);
-        }
-
-        fetch("https://hooks.zapier.com/hooks/catch/24835337/4yn32q6/", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/x-www-form-urlencoded"
-          },
-          body: data.toString()
-        }).finally(() => {
-          window.location.href = "gts_survey_thank_you_page.html";
-        });
-      });
-    });
-  </script>
 </body>
 </html>
