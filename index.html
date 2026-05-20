@@ -7,14 +7,13 @@
 
   <style>
     :root {
-      --primary: #1f4e79;
-      --primary-dark: #163a5c;
-      --bg: #f5f7fa;
+      --bg: #f6f7f9;
       --card: #ffffff;
-      --border: #d0d5dd;
       --text: #1f2933;
       --muted: #667085;
-      --success: #e7f8ee;
+      --border: #d0d5dd;
+      --accent: #1f4e79;
+      --accent-light: #eaf2f8;
     }
 
     * {
@@ -23,131 +22,239 @@
 
     body {
       margin: 0;
-      background: var(--bg);
       font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
       color: var(--text);
-      padding: 40px 20px;
+      line-height: 1.5;
     }
 
     .container {
       max-width: 900px;
-      margin: 0 auto;
-      background: var(--card);
-      border-radius: 18px;
-      padding: 40px;
-      border: 1px solid var(--border);
-      box-shadow: 0 10px 30px rgba(16, 24, 40, 0.08);
+      margin: 40px auto;
+      padding: 0 20px;
     }
 
-    h1 {
-      margin-top: 0;
-      color: var(--primary);
-      font-size: 36px;
+    .survey-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      box-shadow: 0 8px 24px rgba(16, 24, 40, 0.08);
+      overflow: hidden;
+    }
+
+    .header {
+      background: var(--accent);
+      color: #ffffff;
+      padding: 32px;
+    }
+
+    .header h1 {
+      margin: 0 0 12px;
+      font-size: 28px;
       line-height: 1.2;
     }
 
-    p.description {
-      color: var(--muted);
-      font-size: 16px;
-      line-height: 1.6;
-      margin-bottom: 36px;
+    .header p {
+      margin: 0;
+      color: #eef4ff;
+      max-width: 760px;
     }
 
-    .section {
-      margin-bottom: 36px;
+    form {
+      padding: 32px;
     }
 
-    .section h2 {
-      font-size: 22px;
-      margin-bottom: 20px;
-      color: var(--primary-dark);
+    section {
+      margin-bottom: 34px;
+      padding-bottom: 26px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    section:last-of-type {
+      border-bottom: none;
+      margin-bottom: 18px;
+    }
+
+    h2 {
+      margin: 0 0 18px;
+      font-size: 20px;
+      color: var(--accent);
     }
 
     .field {
-      margin-bottom: 24px;
+      margin-bottom: 22px;
     }
 
-    label {
+    label,
+    legend {
       display: block;
-      font-weight: bold;
+      font-weight: 700;
       margin-bottom: 8px;
     }
 
-    input,
+    .hint {
+      color: var(--muted);
+      font-size: 14px;
+      margin-top: -4px;
+      margin-bottom: 10px;
+    }
+
+    input[type="text"],
+    input[type="email"],
     select,
     textarea {
       width: 100%;
-      padding: 14px;
-      border-radius: 10px;
       border: 1px solid var(--border);
-      font-size: 15px;
-      font-family: inherit;
+      border-radius: 8px;
+      padding: 11px 12px;
+      font-size: 16px;
+      background: #ffffff;
     }
 
     textarea {
-      min-height: 120px;
+      min-height: 110px;
       resize: vertical;
     }
 
-    .radio-group {
-      display: grid;
-      gap: 10px;
-      margin-top: 10px;
-    }
-
-    .radio-option {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 12px;
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      cursor: pointer;
-    }
-
-    .radio-option input {
-      width: auto;
+    fieldset {
+      border: 0;
+      padding: 0;
       margin: 0;
     }
 
-    .submit-btn {
+    .options {
+      display: grid;
+      gap: 10px;
+    }
+
+    .options.two-col {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .options.three-col {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .option {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 400;
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 10px 12px;
+    }
+
+    .rating-scale {
+      display: grid;
+      grid-template-columns: repeat(10, 1fr);
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .rating-scale label {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 10px 4px;
+      font-weight: 400;
+      background: #ffffff;
+    }
+
+    .scale-labels {
+      display: flex;
+      justify-content: space-between;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .matrix {
       width: 100%;
-      padding: 18px;
-      background: var(--primary);
-      color: white;
-      border: none;
-      border-radius: 12px;
-      font-size: 18px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: background 0.2s ease;
-    }
-
-    .submit-btn:hover {
-      background: var(--primary-dark);
-    }
-
-    .submit-btn:disabled {
-      opacity: 0.7;
-      cursor: not-allowed;
-    }
-
-    .note {
-      background: var(--success);
-      padding: 18px;
-      border-radius: 12px;
-      margin-bottom: 30px;
+      border-collapse: collapse;
+      margin-top: 10px;
       font-size: 15px;
-      line-height: 1.5;
     }
 
-    @media (max-width: 640px) {
+    .matrix th,
+    .matrix td {
+      border: 1px solid var(--border);
+      padding: 10px;
+      text-align: center;
+    }
+
+    .matrix th:first-child,
+    .matrix td:first-child {
+      text-align: left;
+      width: 38%;
+    }
+
+    .matrix thead {
+      background: var(--accent-light);
+    }
+
+    .required {
+      color: #b42318;
+    }
+
+    .actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    button {
+      border: 0;
+      border-radius: 8px;
+      padding: 12px 22px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button[type="reset"] {
+      background: #eef2f6;
+      color: var(--text);
+    }
+
+    button[type="submit"] {
+      background: var(--accent);
+      color: #ffffff;
+    }
+
+    .footer-note {
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 14px;
+      text-align: center;
+    }
+
+    @media (max-width: 720px) {
       .container {
-        padding: 28px 20px;
+        margin: 20px auto;
       }
 
-      h1 {
-        font-size: 28px;
+      .header,
+      form {
+        padding: 24px;
+      }
+
+      .options.two-col,
+      .options.three-col,
+      .rating-scale {
+        grid-template-columns: 1fr;
+      }
+
+      .matrix {
+        font-size: 14px;
+      }
+
+      .matrix th,
+      .matrix td {
+        padding: 8px 6px;
       }
     }
   </style>
@@ -155,132 +262,292 @@
 
 <body>
 
-  <div class="container">
+  <main class="container">
+    <div class="survey-card">
 
-    <h1>George T. Sanders Customer Experience Survey</h1>
+      <header class="header">
+        <h1>George T. Sanders Customer Experience Survey</h1>
 
-    <p class="description">
-      Thank you for taking the time to provide your feedback.
-      Your responses help us improve pricing, communication,
-      service, product availability, and overall customer experience.
-    </p>
+        <p>
+          Thank you for being a valued customer of George T. Sanders Company.
+          We appreciate your feedback and are committed to continually improving
+          our pricing, service, and overall customer experience.
+          This survey should take approximately 5 minutes to complete.
+        </p>
+      </header>
 
-    <div class="note">
-      Survey participants may qualify for a digital gift card reward
-      after review of their submission.
-    </div>
+      <form id="survey-form">
 
-    <form id="survey-form">
+        <input type="hidden" id="submitted-at" name="submitted_at" />
 
-      <input type="hidden" id="submitted-at" name="submitted_at" />
+        <section>
+          <h2>Customer Information</h2>
 
-      <div class="section">
-        <h2>Company Information</h2>
-
-        <div class="field">
-          <label>Company Name *</label>
-          <input type="text" name="company_name" required />
-        </div>
-
-        <div class="field">
-          <label>Your Name *</label>
-          <input type="text" name="customer_name" required />
-        </div>
-
-        <div class="field">
-          <label>Email Address *</label>
-          <input type="email" name="email" required />
-        </div>
-
-        <div class="field">
-          <label>Branch Location *</label>
-          <input type="text" name="branch_location" required />
-        </div>
-      </div>
-
-      <div class="section">
-        <h2>Overall Experience</h2>
-
-        <div class="field">
-          <label>Overall Satisfaction *</label>
-
-          <div class="radio-group">
-            <label class="radio-option">
-              <input type="radio" name="overall_satisfaction" value="Very Satisfied" required />
-              Very Satisfied
+          <div class="field">
+            <label for="company-name">
+              Company Name <span class="required">*</span>
             </label>
 
-            <label class="radio-option">
-              <input type="radio" name="overall_satisfaction" value="Satisfied" />
-              Satisfied
-            </label>
-
-            <label class="radio-option">
-              <input type="radio" name="overall_satisfaction" value="Neutral" />
-              Neutral
-            </label>
-
-            <label class="radio-option">
-              <input type="radio" name="overall_satisfaction" value="Dissatisfied" />
-              Dissatisfied
-            </label>
-
-            <label class="radio-option">
-              <input type="radio" name="overall_satisfaction" value="Very Dissatisfied" />
-              Very Dissatisfied
-            </label>
+            <input
+              type="text"
+              id="company-name"
+              name="company_name"
+              required
+            />
           </div>
+
+          <div class="field">
+            <label for="contact-name">
+              Contact Name
+              <span class="hint">(Optional)</span>
+            </label>
+
+            <input
+              type="text"
+              id="contact-name"
+              name="contact_name"
+            />
+          </div>
+
+          <div class="field">
+            <label for="customer-email">
+              Customer Email <span class="required">*</span>
+            </label>
+
+            <p class="hint">
+              Your email is required so we can send your digital gift card
+              for completing this survey.
+            </p>
+
+            <input
+              type="email"
+              id="customer-email"
+              name="customer_email"
+              required
+            />
+          </div>
+
+          <div class="field">
+            <label for="branch-location">
+              Branch Location You Primarily Work With
+              <span class="required">*</span>
+            </label>
+
+            <select
+              id="branch-location"
+              name="branch_location"
+              required
+            >
+              <option value="">Select a branch</option>
+              <option>Wheat Ridge</option>
+              <option>Silverthorne</option>
+              <option>Denver</option>
+              <option>Basalt</option>
+              <option>Montrose</option>
+              <option>Fort Collins</option>
+              <option>Highlands Ranch</option>
+              <option>Colorado Springs</option>
+              <option>Louisville</option>
+              <option>Grand Junction</option>
+              <option>Brighton</option>
+              <option>Berthoud</option>
+              <option>Greeley</option>
+              <option>Pagosa Springs</option>
+              <option>Centennial</option>
+              <option>Englewood</option>
+              <option>Aurora</option>
+              <option>Cody</option>
+            </select>
+          </div>
+        </section>
+
+        <section>
+          <h2>1. Overall Experience</h2>
+
+          <div class="field">
+            <fieldset>
+              <legend>
+                How satisfied are you with George T. Sanders overall?
+                <span class="required">*</span>
+              </legend>
+
+              <div class="options">
+                <label class="option">
+                  <input
+                    type="radio"
+                    name="overall_satisfaction"
+                    value="Very Satisfied"
+                    required
+                  />
+                  Very Satisfied
+                </label>
+
+                <label class="option">
+                  <input
+                    type="radio"
+                    name="overall_satisfaction"
+                    value="Satisfied"
+                  />
+                  Satisfied
+                </label>
+
+                <label class="option">
+                  <input
+                    type="radio"
+                    name="overall_satisfaction"
+                    value="Neutral"
+                  />
+                  Neutral
+                </label>
+
+                <label class="option">
+                  <input
+                    type="radio"
+                    name="overall_satisfaction"
+                    value="Dissatisfied"
+                  />
+                  Dissatisfied
+                </label>
+
+                <label class="option">
+                  <input
+                    type="radio"
+                    name="overall_satisfaction"
+                    value="Very Dissatisfied"
+                  />
+                  Very Dissatisfied
+                </label>
+              </div>
+            </fieldset>
+          </div>
+
+          <div class="field">
+            <fieldset>
+              <legend>
+                Is GTS punctual at answering the phones when you call?
+                <span class="required">*</span>
+              </legend>
+
+              <div class="options">
+                <label class="option">
+                  <input
+                    type="radio"
+                    name="phone_answering"
+                    value="Always"
+                    required
+                  />
+                  Always
+                </label>
+
+                <label class="option">
+                  <input
+                    type="radio"
+                    name="phone_answering"
+                    value="Usually"
+                  />
+                  Usually
+                </label>
+
+                <label class="option">
+                  <input
+                    type="radio"
+                    name="phone_answering"
+                    value="Sometimes"
+                  />
+                  Sometimes
+                </label>
+
+                <label class="option">
+                  <input
+                    type="radio"
+                    name="phone_answering"
+                    value="Rarely"
+                  />
+                  Rarely
+                </label>
+              </div>
+            </fieldset>
+          </div>
+
+          <div class="field">
+            <fieldset>
+              <legend>
+                If you leave a voicemail, does GTS respond in a timely manner?
+                <span class="required">*</span>
+              </legend>
+
+              <div class="options">
+                <label class="option">
+                  <input
+                    type="radio"
+                    name="voicemail_response"
+                    value="Always"
+                    required
+                  />
+                  Always
+                </label>
+
+                <label class="option">
+                  <input
+                    type="radio"
+                    name="voicemail_response"
+                    value="Usually"
+                  />
+                  Usually
+                </label>
+
+                <label class="option">
+                  <input
+                    type="radio"
+                    name="voicemail_response"
+                    value="Sometimes"
+                  />
+                  Sometimes
+                </label>
+
+                <label class="option">
+                  <input
+                    type="radio"
+                    name="voicemail_response"
+                    value="Rarely"
+                  />
+                  Rarely
+                </label>
+              </div>
+            </fieldset>
+          </div>
+
+          <div class="field">
+            <label for="additional-feedback">
+              Please share any additional comments, concerns, or suggestions.
+            </label>
+
+            <textarea
+              id="additional-feedback"
+              name="additional_feedback"
+            ></textarea>
+          </div>
+        </section>
+
+        <div class="actions">
+          <button type="reset">
+            Clear Form
+          </button>
+
+          <button type="submit">
+            Submit Survey
+          </button>
         </div>
 
-        <div class="field">
-          <label>How would you rate our pricing?</label>
+        <p class="footer-note">
+          Thank you for your feedback and partnership.
+          Your input helps us improve and better serve your business.
+        </p>
 
-          <select name="pricing_rating">
-            <option value="">Select One</option>
-            <option>Excellent</option>
-            <option>Good</option>
-            <option>Average</option>
-            <option>Poor</option>
-          </select>
-        </div>
+      </form>
 
-        <div class="field">
-          <label>How would you rate our communication?</label>
-
-          <select name="communication_rating">
-            <option value="">Select One</option>
-            <option>Excellent</option>
-            <option>Good</option>
-            <option>Average</option>
-            <option>Poor</option>
-          </select>
-        </div>
-
-        <div class="field">
-          <label>How would you rate our product availability?</label>
-
-          <select name="availability_rating">
-            <option value="">Select One</option>
-            <option>Excellent</option>
-            <option>Good</option>
-            <option>Average</option>
-            <option>Poor</option>
-          </select>
-        </div>
-
-        <div class="field">
-          <label>Additional Comments</label>
-          <textarea name="comments"></textarea>
-        </div>
-      </div>
-
-      <button type="submit" class="submit-btn">
-        Submit Survey
-      </button>
-
-    </form>
-
-  </div>
+    </div>
+  </main>
 
   <script>
     window.addEventListener("DOMContentLoaded", () => {
@@ -303,7 +570,7 @@
         const data = new URLSearchParams();
 
         for (const [key, value] of formData.entries()) {
-          data.append(key, value);
+          data.append(key.replace("[]", ""), value);
         }
 
         navigator.sendBeacon(
