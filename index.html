@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>George T. Sanders Customer Experience Survey</title>
-
   <style>
     :root {
       --bg: #f6f7f9;
@@ -259,85 +258,46 @@
     }
   </style>
 </head>
-
 <body>
-
   <main class="container">
     <div class="survey-card">
-
       <header class="header">
         <h1>George T. Sanders Customer Experience Survey</h1>
-
         <p>
           Thank you for being a valued customer of George T. Sanders Company.
-          We appreciate your feedback and are committed to continually improving
-          our pricing, service, and overall customer experience.
-          This survey should take approximately 5 minutes to complete.
+          We appreciate your feedback and are committed to continually improving our pricing,
+          service, and overall customer experience. This survey should take approximately
+          5 minutes to complete.
         </p>
       </header>
 
       <form id="survey-form">
-
         <input type="hidden" id="submitted-at" name="submitted_at" />
 
         <section>
           <h2>Customer Information</h2>
 
           <div class="field">
-            <label for="company-name">
-              Company Name <span class="required">*</span>
-            </label>
-
-            <input
-              type="text"
-              id="company-name"
-              name="company_name"
-              required
-            />
+            <label for="company-name">Company Name <span class="required">*</span></label>
+            <input type="text" id="company-name" name="company_name" required />
           </div>
 
           <div class="field">
-            <label for="contact-name">
-              Contact Name
-              <span class="hint">(Optional)</span>
-            </label>
-
-            <input
-              type="text"
-              id="contact-name"
-              name="contact_name"
-            />
+            <label for="contact-name">Contact Name <span class="hint">(Optional)</span></label>
+            <input type="text" id="contact-name" name="contact_name" />
           </div>
 
           <div class="field">
-            <label for="customer-email">
-              Customer Email <span class="required">*</span>
-            </label>
-
+            <label for="customer-email">Customer Email <span class="required">*</span></label>
             <p class="hint">
-              Your email is required so we can send your digital gift card
-              for completing this survey.
+              Your email is required so we can send your digital gift card for completing this survey.
             </p>
-
-            <input
-              type="email"
-              id="customer-email"
-              name="customer_email"
-              required
-            />
+            <input type="email" id="customer-email" name="customer_email" required />
           </div>
 
           <div class="field">
-            <label for="branch-location">
-              Branch Location You Primarily Work With
-              <span class="required">*</span>
-            </label>
-
-            <select
-              id="branch-location"
-              name="branch_location"
-              required
-            >
+            <label for="branch-location">Branch Location You Primarily Work With <span class="required">*</span></label>
+            <select id="branch-location" name="branch_location" required>
               <option value="">Select a branch</option>
               <option>Wheat Ridge</option>
               <option>Silverthorne</option>
@@ -366,203 +326,324 @@
 
           <div class="field">
             <fieldset>
-              <legend>
-                How satisfied are you with George T. Sanders overall?
-                <span class="required">*</span>
-              </legend>
-
+              <legend>How satisfied are you with George T. Sanders overall? <span class="required">*</span></legend>
               <div class="options">
-                <label class="option">
-                  <input
-                    type="radio"
-                    name="overall_satisfaction"
-                    value="Very Satisfied"
-                    required
-                  />
-                  Very Satisfied
-                </label>
-
-                <label class="option">
-                  <input
-                    type="radio"
-                    name="overall_satisfaction"
-                    value="Satisfied"
-                  />
-                  Satisfied
-                </label>
-
-                <label class="option">
-                  <input
-                    type="radio"
-                    name="overall_satisfaction"
-                    value="Neutral"
-                  />
-                  Neutral
-                </label>
-
-                <label class="option">
-                  <input
-                    type="radio"
-                    name="overall_satisfaction"
-                    value="Dissatisfied"
-                  />
-                  Dissatisfied
-                </label>
-
-                <label class="option">
-                  <input
-                    type="radio"
-                    name="overall_satisfaction"
-                    value="Very Dissatisfied"
-                  />
-                  Very Dissatisfied
-                </label>
+                <label class="option"><input type="radio" name="overall_satisfaction" value="Very Satisfied" required /> Very Satisfied</label>
+                <label class="option"><input type="radio" name="overall_satisfaction" value="Satisfied" /> Satisfied</label>
+                <label class="option"><input type="radio" name="overall_satisfaction" value="Neutral" /> Neutral</label>
+                <label class="option"><input type="radio" name="overall_satisfaction" value="Dissatisfied" /> Dissatisfied</label>
+                <label class="option"><input type="radio" name="overall_satisfaction" value="Very Dissatisfied" /> Very Dissatisfied</label>
               </div>
             </fieldset>
           </div>
 
           <div class="field">
             <fieldset>
-              <legend>
-                Is GTS punctual at answering the phones when you call?
-                <span class="required">*</span>
-              </legend>
+              <legend>How likely are you to recommend George T. Sanders to others? <span class="required">*</span></legend>
+              <div class="scale-labels">
+                <span>1 = Not Likely</span>
+                <span>10 = Extremely Likely</span>
+              </div>
+              <div class="rating-scale">
+                <label><input type="radio" name="recommendation_likelihood" value="1" required />1</label>
+                <label><input type="radio" name="recommendation_likelihood" value="2" />2</label>
+                <label><input type="radio" name="recommendation_likelihood" value="3" />3</label>
+                <label><input type="radio" name="recommendation_likelihood" value="4" />4</label>
+                <label><input type="radio" name="recommendation_likelihood" value="5" />5</label>
+                <label><input type="radio" name="recommendation_likelihood" value="6" />6</label>
+                <label><input type="radio" name="recommendation_likelihood" value="7" />7</label>
+                <label><input type="radio" name="recommendation_likelihood" value="8" />8</label>
+                <label><input type="radio" name="recommendation_likelihood" value="9" />9</label>
+                <label><input type="radio" name="recommendation_likelihood" value="10" />10</label>
+              </div>
+            </fieldset>
+          </div>
+        </section>
 
-              <div class="options">
-                <label class="option">
-                  <input
-                    type="radio"
-                    name="phone_answering"
-                    value="Always"
-                    required
-                  />
-                  Always
-                </label>
+        <section>
+          <h2>2. Pricing &amp; Value</h2>
 
-                <label class="option">
-                  <input
-                    type="radio"
-                    name="phone_answering"
-                    value="Usually"
-                  />
-                  Usually
-                </label>
-
-                <label class="option">
-                  <input
-                    type="radio"
-                    name="phone_answering"
-                    value="Sometimes"
-                  />
-                  Sometimes
-                </label>
-
-                <label class="option">
-                  <input
-                    type="radio"
-                    name="phone_answering"
-                    value="Rarely"
-                  />
-                  Rarely
-                </label>
+          <div class="field">
+            <fieldset>
+              <legend>How would you rate our pricing competitiveness? <span class="required">*</span></legend>
+              <div class="options two-col">
+                <label class="option"><input type="radio" name="pricing_competitiveness" value="Excellent" required /> Excellent</label>
+                <label class="option"><input type="radio" name="pricing_competitiveness" value="Good" /> Good</label>
+                <label class="option"><input type="radio" name="pricing_competitiveness" value="Fair" /> Fair</label>
+                <label class="option"><input type="radio" name="pricing_competitiveness" value="Poor" /> Poor</label>
               </div>
             </fieldset>
           </div>
 
           <div class="field">
             <fieldset>
-              <legend>
-                If you leave a voicemail, does GTS respond in a timely manner?
-                <span class="required">*</span>
-              </legend>
-
-              <div class="options">
-                <label class="option">
-                  <input
-                    type="radio"
-                    name="voicemail_response"
-                    value="Always"
-                    required
-                  />
-                  Always
-                </label>
-
-                <label class="option">
-                  <input
-                    type="radio"
-                    name="voicemail_response"
-                    value="Usually"
-                  />
-                  Usually
-                </label>
-
-                <label class="option">
-                  <input
-                    type="radio"
-                    name="voicemail_response"
-                    value="Sometimes"
-                  />
-                  Sometimes
-                </label>
-
-                <label class="option">
-                  <input
-                    type="radio"
-                    name="voicemail_response"
-                    value="Rarely"
-                  />
-                  Rarely
-                </label>
+              <legend>How would you rate the value you receive for the price paid? <span class="required">*</span></legend>
+              <div class="options two-col">
+                <label class="option"><input type="radio" name="price_value" value="Excellent" required /> Excellent</label>
+                <label class="option"><input type="radio" name="price_value" value="Good" /> Good</label>
+                <label class="option"><input type="radio" name="price_value" value="Fair" /> Fair</label>
+                <label class="option"><input type="radio" name="price_value" value="Poor" /> Poor</label>
               </div>
             </fieldset>
           </div>
 
           <div class="field">
-            <label for="additional-feedback">
-              Please share any additional comments, concerns, or suggestions.
-            </label>
+            <fieldset>
+              <legend>In which areas could we improve our pricing or value?</legend>
+              <div class="options three-col">
+                <label class="option"><input type="checkbox" name="pricing_improvement[]" value="Product Pricing" /> Product Pricing</label>
+                <label class="option"><input type="checkbox" name="pricing_improvement[]" value="Job Quotes" /> Job Quotes</label>
+                <label class="option"><input type="checkbox" name="pricing_improvement[]" value="Contractor Programs" /> Contractor Programs</label>
+                <label class="option"><input type="checkbox" name="pricing_improvement[]" value="Delivery Fees" /> Delivery Fees</label>
+                <label class="option"><input type="checkbox" name="pricing_improvement[]" value="Volume Discounts" /> Volume Discounts</label>
+                <label class="option"><input type="checkbox" name="pricing_improvement[]" value="Payment Terms" /> Payment Terms</label>
+              </div>
+            </fieldset>
+          </div>
 
-            <textarea
-              id="additional-feedback"
-              name="additional_feedback"
-            ></textarea>
+          <div class="field">
+            <label for="pricing-improvement-other">Other pricing or value improvement area</label>
+            <input type="text" id="pricing-improvement-other" name="pricing_improvement_other" />
+          </div>
+
+          <div class="field">
+            <fieldset>
+              <legend>Which product categories do you purchase from us due to competitive pricing?</legend>
+              <div class="options two-col">
+                <label class="option"><input type="checkbox" name="competitive_pricing_purchase[]" value="Plumbing Fixtures" /> Plumbing Fixtures</label>
+                <label class="option"><input type="checkbox" name="competitive_pricing_purchase[]" value="Tools" /> Tools</label>
+                <label class="option"><input type="checkbox" name="competitive_pricing_purchase[]" value="Water Heaters" /> Water Heaters</label>
+                <label class="option"><input type="checkbox" name="competitive_pricing_purchase[]" value="Hydronic Heat" /> Hydronic Heat</label>
+                <label class="option"><input type="checkbox" name="competitive_pricing_purchase[]" value="HVAC" /> HVAC</label>
+                <label class="option"><input type="checkbox" name="competitive_pricing_purchase[]" value="Commodity Pipe and Fittings" /> Commodity Pipe and Fittings</label>
+                <label class="option"><input type="checkbox" name="competitive_pricing_purchase[]" value="Other" /> Other</label>
+              </div>
+            </fieldset>
+          </div>
+
+          <div class="field">
+            <label for="competitive-pricing-purchase-other">Other competitively priced product category</label>
+            <input type="text" id="competitive-pricing-purchase-other" name="competitive_pricing_purchase_other" />
+          </div>
+
+          <div class="field">
+            <fieldset>
+              <legend>Which product categories do you not buy from GTS due to uncompetitive pricing?</legend>
+              <div class="options two-col">
+                <label class="option"><input type="checkbox" name="uncompetitive_pricing_not_purchased[]" value="Plumbing Fixtures" /> Plumbing Fixtures</label>
+                <label class="option"><input type="checkbox" name="uncompetitive_pricing_not_purchased[]" value="Tools" /> Tools</label>
+                <label class="option"><input type="checkbox" name="uncompetitive_pricing_not_purchased[]" value="Water Heaters" /> Water Heaters</label>
+                <label class="option"><input type="checkbox" name="uncompetitive_pricing_not_purchased[]" value="Hydronic Heat" /> Hydronic Heat</label>
+                <label class="option"><input type="checkbox" name="uncompetitive_pricing_not_purchased[]" value="HVAC" /> HVAC</label>
+                <label class="option"><input type="checkbox" name="uncompetitive_pricing_not_purchased[]" value="Commodity Pipe and Fittings" /> Commodity Pipe and Fittings</label>
+                <label class="option"><input type="checkbox" name="uncompetitive_pricing_not_purchased[]" value="Other" /> Other</label>
+              </div>
+            </fieldset>
+          </div>
+
+          <div class="field">
+            <label for="uncompetitive-pricing-other">Other uncompetitive product category</label>
+            <input type="text" id="uncompetitive-pricing-other" name="uncompetitive_pricing_not_purchased_other" />
+          </div>
+        </section>
+
+        <section>
+          <h2>3. Service &amp; Support</h2>
+
+          <div class="field">
+            <fieldset>
+              <legend>How would you rate our customer service? <span class="required">*</span></legend>
+              <div class="options two-col">
+                <label class="option"><input type="radio" name="customer_service" value="Excellent" required /> Excellent</label>
+                <label class="option"><input type="radio" name="customer_service" value="Good" /> Good</label>
+                <label class="option"><input type="radio" name="customer_service" value="Fair" /> Fair</label>
+                <label class="option"><input type="radio" name="customer_service" value="Poor" /> Poor</label>
+              </div>
+            </fieldset>
+          </div>
+
+          <div class="field">
+            <fieldset>
+              <legend>How responsive is our team when you need assistance? <span class="required">*</span></legend>
+              <div class="options">
+                <label class="option"><input type="radio" name="team_responsiveness" value="Extremely Responsive" required /> Extremely Responsive</label>
+                <label class="option"><input type="radio" name="team_responsiveness" value="Responsive" /> Responsive</label>
+                <label class="option"><input type="radio" name="team_responsiveness" value="Somewhat Responsive" /> Somewhat Responsive</label>
+                <label class="option"><input type="radio" name="team_responsiveness" value="Not Responsive" /> Not Responsive</label>
+              </div>
+            </fieldset>
+          </div>
+
+          <div class="field">
+            <fieldset>
+              <legend>Is GTS punctual at answering the phones when you call? <span class="required">*</span></legend>
+              <div class="options">
+                <label class="option"><input type="radio" name="phone_answering" value="Always" required /> Always</label>
+                <label class="option"><input type="radio" name="phone_answering" value="Usually" /> Usually</label>
+                <label class="option"><input type="radio" name="phone_answering" value="Sometimes" /> Sometimes</label>
+                <label class="option"><input type="radio" name="phone_answering" value="Rarely" /> Rarely</label>
+              </div>
+            </fieldset>
+          </div>
+
+          <div class="field">
+            <fieldset>
+              <legend>If you leave a voicemail, does GTS respond in a timely manner? <span class="required">*</span></legend>
+              <div class="options">
+                <label class="option"><input type="radio" name="voicemail_response" value="Always" required /> Always</label>
+                <label class="option"><input type="radio" name="voicemail_response" value="Usually" /> Usually</label>
+                <label class="option"><input type="radio" name="voicemail_response" value="Sometimes" /> Sometimes</label>
+                <label class="option"><input type="radio" name="voicemail_response" value="Rarely" /> Rarely</label>
+              </div>
+            </fieldset>
+          </div>
+
+          <div class="field">
+            <fieldset>
+              <legend>Please rate the following: <span class="required">*</span></legend>
+              <table class="matrix">
+                <thead>
+                  <tr>
+                    <th>Category</th>
+                    <th>Excellent</th>
+                    <th>Good</th>
+                    <th>Fair</th>
+                    <th>Poor</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Product Availability</td>
+                    <td><input type="radio" name="product_availability" value="Excellent" required /></td>
+                    <td><input type="radio" name="product_availability" value="Good" /></td>
+                    <td><input type="radio" name="product_availability" value="Fair" /></td>
+                    <td><input type="radio" name="product_availability" value="Poor" /></td>
+                  </tr>
+                  <tr>
+                    <td>Order Accuracy</td>
+                    <td><input type="radio" name="order_accuracy" value="Excellent" required /></td>
+                    <td><input type="radio" name="order_accuracy" value="Good" /></td>
+                    <td><input type="radio" name="order_accuracy" value="Fair" /></td>
+                    <td><input type="radio" name="order_accuracy" value="Poor" /></td>
+                  </tr>
+                  <tr>
+                    <td>Delivery Performance</td>
+                    <td><input type="radio" name="delivery_performance" value="Excellent" required /></td>
+                    <td><input type="radio" name="delivery_performance" value="Good" /></td>
+                    <td><input type="radio" name="delivery_performance" value="Fair" /></td>
+                    <td><input type="radio" name="delivery_performance" value="Poor" /></td>
+                  </tr>
+                  <tr>
+                    <td>Counter Service</td>
+                    <td><input type="radio" name="counter_service" value="Excellent" required /></td>
+                    <td><input type="radio" name="counter_service" value="Good" /></td>
+                    <td><input type="radio" name="counter_service" value="Fair" /></td>
+                    <td><input type="radio" name="counter_service" value="Poor" /></td>
+                  </tr>
+                  <tr>
+                    <td>Technical/Product Knowledge</td>
+                    <td><input type="radio" name="technical_product_knowledge" value="Excellent" required /></td>
+                    <td><input type="radio" name="technical_product_knowledge" value="Good" /></td>
+                    <td><input type="radio" name="technical_product_knowledge" value="Fair" /></td>
+                    <td><input type="radio" name="technical_product_knowledge" value="Poor" /></td>
+                  </tr>
+                  <tr>
+                    <td>Communication</td>
+                    <td><input type="radio" name="communication" value="Excellent" required /></td>
+                    <td><input type="radio" name="communication" value="Good" /></td>
+                    <td><input type="radio" name="communication" value="Fair" /></td>
+                    <td><input type="radio" name="communication" value="Poor" /></td>
+                  </tr>
+                </tbody>
+              </table>
+            </fieldset>
+          </div>
+        </section>
+
+        <section>
+          <h2>4. Competitive Insights</h2>
+
+          <div class="field">
+            <fieldset>
+              <legend>Which suppliers or competitors do you also work with?</legend>
+              <div class="options two-col">
+                <label class="option"><input type="checkbox" name="competitors[]" value="Ferguson" /> Ferguson</label>
+                <label class="option"><input type="checkbox" name="competitors[]" value="Hajoca" /> Hajoca</label>
+                <label class="option"><input type="checkbox" name="competitors[]" value="Winsupply" /> Winsupply</label>
+                <label class="option"><input type="checkbox" name="competitors[]" value="MORSCO/Reece" /> MORSCO/Reece</label>
+                <label class="option"><input type="checkbox" name="competitors[]" value="Coburn’s" /> Coburn’s</label>
+                <label class="option"><input type="checkbox" name="competitors[]" value="Other" /> Other</label>
+              </div>
+            </fieldset>
+          </div>
+
+          <div class="field">
+            <label for="competitor-other">Other supplier or competitor</label>
+            <input type="text" id="competitor-other" name="competitor_other" />
+          </div>
+
+          <div class="field">
+            <label for="competitors-do-well">What are competitors doing particularly well that you value?</label>
+            <textarea id="competitors-do-well" name="competitors_do_well"></textarea>
+          </div>
+
+          <div class="field">
+            <label for="missing-offerings">Are there products, services, programs, or technologies competitors provide that George T. Sanders currently does not?</label>
+            <textarea id="missing-offerings" name="missing_offerings"></textarea>
+          </div>
+
+          <div class="field">
+            <label for="competitor-impact">How do those competitor offerings improve your business operations, profitability, or customer experience?</label>
+            <textarea id="competitor-impact" name="competitor_impact"></textarea>
+          </div>
+        </section>
+
+        <section>
+          <h2>5. Growth Opportunities</h2>
+
+          <div class="field">
+            <label for="additional-products-services">What additional products or services would you like us to offer?</label>
+            <textarea id="additional-products-services" name="additional_products_services"></textarea>
+          </div>
+
+          <div class="field">
+            <label for="valuable-partner">What could George T. Sanders do to become a more valuable partner to your business?</label>
+            <textarea id="valuable-partner" name="valuable_partner"></textarea>
+          </div>
+        </section>
+
+        <section>
+          <h2>6. Final Feedback</h2>
+
+          <div class="field">
+            <label for="additional-feedback">Please share any additional comments, concerns, or suggestions.</label>
+            <textarea id="additional-feedback" name="additional_feedback"></textarea>
           </div>
         </section>
 
         <div class="actions">
-          <button type="reset">
-            Clear Form
-          </button>
-
-          <button type="submit">
-            Submit Survey
-          </button>
+          <button type="reset">Clear Form</button>
+          <button type="submit">Submit Survey</button>
         </div>
 
         <p class="footer-note">
-          Thank you for your feedback and partnership.
-          Your input helps us improve and better serve your business.
+          Thank you for your feedback and partnership. Your input helps us improve and better serve your business.
         </p>
-
       </form>
-
     </div>
   </main>
 
   <script>
     window.addEventListener("DOMContentLoaded", () => {
-
       const form = document.getElementById("survey-form");
       const submittedAt = document.getElementById("submitted-at");
 
       form.addEventListener("submit", function(event) {
-
         event.preventDefault();
 
         submittedAt.value = new Date().toISOString();
 
         const submitButton = form.querySelector('button[type="submit"]');
-
         submitButton.disabled = true;
         submitButton.innerText = "Submitting...";
 
@@ -579,11 +660,8 @@
         );
 
         window.location.href = "gts_survey_thank_you_page.html";
-
       });
-
     });
   </script>
-
 </body>
 </html>
